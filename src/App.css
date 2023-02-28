@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+:root{
+  --bg-img: url('../public/img/sprites.png');
+  --num-width:14px;
+  --num-height:23px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#global{
+  width: 330px;
+  height: 565px;
+  background: firebrick;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.grid-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  background: grey;
+  max-width: 274px;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-row {
+  /*flex: 1;*/
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid-col {
+  flex: 1;
+  height: 50px;
+  background-color: lightgray;
+  /*border: 1px solid white;*/
 }
+
+#gl0bal {
+  background: green;
+}
+
+.grid-col.col{
+  width: 17px;
+  height: 17px;
+  background: var(--bg-img) 2px -51px;
+  cursor: pointer;
+}
+
+.num-1 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) 0 0;
+}
+
+.num-2 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -14px 0;
+}
+.num-3 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -28px 0;
+}
+.num-4 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -42px 0;
+}
+.num-5 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -56px 0;
+}
+.num-6 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -70px 0;
+}
+.num-7 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) -84px 0;
+}
+.num-8 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) 41px 0;
+}
+.num-9 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) 27px 0;
+}
+.num-0 {
+  width: var(--num-width);
+  height: var(--num-height);
+  background: var(--bg-img) 13px 0;
+}
+.smile{
+  width: 27px;
+  height: 26px;
+  background: var(--bg-img) 0 -24px;
+}
+.smile-clicked {
+  width: 27px;
+  height: 26px;
+  background: var(--bg-img) -27px -24px;
+}
+.smile-wow {
+  width: 27px;
+  height: 26px;
+  background: var(--bg-img) -54px -24px;
+}
+.smile-cool {
+  width: 27px;
+  height: 26px;
+  background: var(--bg-img) 58px -24px;
+}
+.smile-sad {
+  width: 27px;
+  height: 26px;
+  background: var(--bg-img) 31px -24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
