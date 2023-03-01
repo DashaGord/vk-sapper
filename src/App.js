@@ -21,17 +21,46 @@ function App() {
     }, [isRunning]);
 
     const handleLeftClick = (event) => {
+        let classList = event.target.classList;
+        if (classList.contains("flag")) {
+            return;
+        }
+
+
         if (!isRunning) {
             setIsRunning(true);
         }
-        console.log("Left clicked!");
     };
 
     const handleRightClick = (event) => {
         event.preventDefault();
-        console.log("Right clicked!");
+
+        let classList = event.target.classList;
+
+        if (classList.contains("pressed-button")) {
+            return;
+        }
+
+        if (classList.contains("flag")) {
+            classList.replace("flag", "question-button");
+            setCounter(counter + 1);
+        } else if (classList.contains("question-button")) {
+            classList.replace("question-button", "grid-col");
+        } else {
+            classList.replace("grid-col", "flag");
+            setCounter(counter - 1);
+        }
     };
 
+    function detectLeftButtonPressed(event) {
+        let element = document.getElementById("smile-box");
+        element.classList.replace("smile", "smile-wow");
+    }
+
+    function detectLeftButtonRelease(event) {
+        let element = document.getElementById("smile-box");
+        element.classList.replace("smile-wow", "smile");
+    }
 
 
     function getNumbersImg(num) {
@@ -41,9 +70,9 @@ function App() {
 
         return (
             <div className="timer-container">
-                <div className={`num-${num1}`} />
-                <div className={`num-${num2}`} />
-                <div className={`num-${num3}`} />
+                <div className={`num-${num1}`}/>
+                <div className={`num-${num2}`}/>
+                <div className={`num-${num3}`}/>
             </div>
         )
 
@@ -54,7 +83,12 @@ function App() {
     for (let i = 0; i < 16; i++) {
         const cols = [];
         for (let j = 0; j < 16; j++) {
-            cols.push(<Col key={j} className={`grid-col f-${j}-${i}`} onClick={handleLeftClick}/>);
+            cols.push(<Col key={j} className={`grid-col f-${j}-${i}`}
+                           onClick={handleLeftClick}
+                           onContextMenu={handleRightClick}
+                           onMouseDown={detectLeftButtonPressed}
+                           onMouseUp={detectLeftButtonRelease}
+            />);
         }
         rows.push(<div key={i} className="grid-row"><Row>{cols}</Row></div>);
     }
@@ -63,7 +97,7 @@ function App() {
         <div id='global'>
             <div className="head-container">
                 {getNumbersImg(counter)}
-                <div className="smile-container smile"></div>
+                <div id="smile-box" className="smile-container smile"></div>
                 {getNumbersImg(time)}
             </div>
             <Container fluid className="grid-container">
