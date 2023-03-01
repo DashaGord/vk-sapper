@@ -2,18 +2,23 @@
   --bg-img: url('../public/img/sprites.png');
   --num-width:14px;
   --num-height:23px;
+  --field-width:17px;
+  --field-height:17px;
+  --smile-width:27px;
+  --smile-height:26px;
 }
 
-#global{
-  width: 330px;
-  height: 565px;
-  background: firebrick;
-}
+/*#global{*/
+/*  width: 40px;*/
+/*  height: 55px;*/
+/*  background: firebrick;*/
+/*}*/
 .grid-container {
   display: flex;
   flex-wrap: wrap;
   background: grey;
   max-width: 274px;
+  border: 9px solid grey;
 }
 
 .grid-row {
@@ -28,15 +33,31 @@
   /*border: 1px solid white;*/
 }
 
-#gl0bal {
-  background: green;
-}
-
 .grid-col.col{
-  width: 17px;
-  height: 17px;
+  width: var(--field-width);
+  height: var(--field-height);
   background: var(--bg-img) 2px -51px;
   cursor: pointer;
+}
+.head-container{
+  display: flex;
+  flex-wrap: wrap;
+  background: grey;
+  height: 30px;
+  max-width: 274px;
+  border: 9px solid grey;
+  justify-content: space-between;
+}
+.timer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.smile-container{
+  cursor: pointer;
+}
+.counter-container{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .num-1 {
@@ -91,30 +112,114 @@
   background: var(--bg-img) 13px 0;
 }
 .smile{
-  width: 27px;
-  height: 26px;
+  width: var(--smile-width);
+  height: var(--smile-height);
   background: var(--bg-img) 0 -24px;
 }
 .smile-clicked {
-  width: 27px;
-  height: 26px;
+  width: var(--smile-width);
+  height: var(--smile-height);
   background: var(--bg-img) -27px -24px;
 }
 .smile-wow {
-  width: 27px;
-  height: 26px;
+  width: var(--smile-width);
+  height: var(--smile-height);
   background: var(--bg-img) -54px -24px;
 }
 .smile-cool {
-  width: 27px;
-  height: 26px;
+  width: var(--smile-width);
+  height: var(--smile-height);
   background: var(--bg-img) 58px -24px;
 }
 .smile-sad {
-  width: 27px;
-  height: 26px;
+  width: var(--smile-width);
+  height: var(--smile-height);
   background: var(--bg-img) 31px -24px;
 }
+.pressed-button{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -16px -49px;
+}
+.flag{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -33px 35px;
+  cursor: pointer;
+}
+.question-button{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -50px 35px;
+  cursor: pointer;
+}
+.question-pressed{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -67px 35px;
+  cursor: pointer;
+}
+.bomb{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 55px -50px;
+}
+.bomb-red{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img)  37px -50px;
+}
+.bomb-cross{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img)  20px -50px;
+
+}
+.field-num-1 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 0 17px;
+}
+.field-num-2 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -16px 17px;
+}
+.field-num-3 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -34px 17px;
+}
+.field-num-4 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) -50px 17px;
+}
+.field-num-5{
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 71px 17px;
+}
+.field-num-6 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 54px 17px;
+}
+.field-num-7 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 37px 17px;
+}
+.field-num-8 {
+  width: var(--field-width);
+  height: var(--field-height);
+  background: var(--bg-img) 20px 17px;
+}
+
+
+
+
+
 
 
 
