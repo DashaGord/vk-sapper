@@ -1,4 +1,4 @@
-import {changeSmile, generateMines, getCoordinatesAroundField} from "./logic";
+import {changeSmile, generateMines, getCoordinatesAroundField, processingClickField, recursiveSelect} from "./logic";
 import {GameStatus, MaxMines} from "./App";
 
 export const handleLeftClick = (event, gameStatus, setGameStatus) => {
@@ -8,14 +8,15 @@ export const handleLeftClick = (event, gameStatus, setGameStatus) => {
         return;
     }
 
+    let split = node.id.split("-");
+    let selectedX = parseInt(split[1]);
+    let selectedY = parseInt(split[2]);
+    let selectedPoint = {X: selectedX, Y: selectedY};
+
     if (GameStatus.NOT_STARTED === gameStatus) {
         setGameStatus(GameStatus.STARTED);
 
-        let split = node.id.split("-");
-        let selectedX = parseInt(split[1]);
-        let selectedY = parseInt(split[2]);
-
-        let mines = generateMines(selectedX, selectedY);
+        let mines = generateMines(selectedPoint);
         mines.forEach(m => {
             const field = document.querySelector(`#grid-container #f-${m.X}-${m.Y}`);
             field.classList.add("bomb");
@@ -56,16 +57,11 @@ export const handleLeftClick = (event, gameStatus, setGameStatus) => {
             changeSmile("smile-sad");
             setGameStatus(GameStatus.LOST);
         } else {
-
-            if (classList.contains("num")) {
-                classList.remove("grid-col", "cr", "cp");
-                Array.from(classList).filter(si => si.startsWith("num-")).forEach(g => {
-                    let number = g.split("-")[1];
-                    classList.replace(`num-${number}`, `field-num-${number}`);
-                })
-            } else {
-                node.className = "pressed-button col";
-            }
+            processingClickField(node);
+            let firstNodeWithNum = classList.contains("num");
+            let freeFields = [selectedPoint];
+            let allDetectedCoords = new Set([JSON.stringify(selectedPoint)]);
+            recursiveSelect(firstNodeWithNum, freeFields, allDetectedCoords);
 
             let notPressed = document.querySelectorAll('#grid-container .grid-col, #grid-container .question-button');
             let cleanFields = Array.from(notPressed).filter(np => !np.classList.contains("bomb")).length;

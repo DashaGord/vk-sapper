@@ -23,12 +23,12 @@ function getRandomNumber(max) {
     return Math.floor(Math.random() * (max));
 }
 
-export function generateMines(selectedX, selectedY) {
+export function generateMines(point) {
     let minesSet = new Set();
     while (minesSet.size < MaxMines) {
         let x = getRandomNumber(N);
         let y = getRandomNumber(M);
-        if (x === selectedX && y === selectedY) {
+        if (x === point.X && y === point.Y) {
             continue;
         }
         minesSet.add(JSON.stringify({X: x, Y: y}));
@@ -58,4 +58,47 @@ export function getCoordinatesAroundField(point) {
     calculateAndPush(points, x - 1, y);
 
     return points;
+}
+
+export function recursiveSelect(firstNodeWithNum, freeFields, allDetectedCoords) {
+    let newFreeFields = [];
+    freeFields.forEach(ff => {
+        getCoordinatesAroundField(ff)
+            .map(p => JSON.stringify(p))
+            .filter(p => !allDetectedCoords.has(p))
+            .forEach(p => {
+                let pp = JSON.parse(p);
+                const field = document.getElementById(`f-${pp.X}-${pp.Y}`);
+                let fcl = field.classList;
+                if (!fcl.contains("bomb")) {
+                    if (firstNodeWithNum && !fcl.contains("num")) {
+                        allDetectedCoords.add(p);
+                        processingClickField(field);
+                        newFreeFields.push(pp);
+                    } else if (!firstNodeWithNum) {
+                        allDetectedCoords.add(p);
+                        processingClickField(field);
+                        if (!fcl.contains("num")) {
+                            newFreeFields.push(pp);
+                        }
+                    }
+                }
+            });
+    });
+    if (newFreeFields.length > 0) {
+        recursiveSelect(false, newFreeFields, allDetectedCoords);
+    }
+}
+
+export function processingClickField(node) {
+    let classList = node.classList;
+    if (classList.contains("num")) {
+        classList.remove("grid-col", "cr", "cp");
+        Array.from(classList).filter(si => si.startsWith("num-")).forEach(g => {
+            let number = g.split("-")[1];
+            classList.replace(`num-${number}`, `field-num-${number}`);
+        })
+    } else {
+        node.className = "pressed-button col";
+    }
 }
