@@ -1,4 +1,4 @@
-import {MaxMines, N, M} from "./App";
+import {M, MaxMines, N} from "./App";
 import React from "react";
 
 export function getNumbersImg(num) {
@@ -26,12 +26,13 @@ function getRandomNumber(max) {
 
 export function generateMines(selectedX, selectedY) {
     let minesSet = new Set();
-    while (minesSet.size <= MaxMines) {
+    while (minesSet.size < MaxMines) {
         let x = getRandomNumber(N);
         let y = getRandomNumber(M);
-        if (!(x === selectedX && y === selectedY)) {
-            minesSet.add(JSON.stringify({X: x, Y: y}));
+        if (x === selectedX && y === selectedY) {
+            continue;
         }
+        minesSet.add(JSON.stringify({X: x, Y: y}));
     }
     return Array.from(minesSet).map(s => JSON.parse(s));
 }

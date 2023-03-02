@@ -8,11 +8,6 @@
   --smile-height:26px;
 }
 
-/*#global{*/
-/*  width: 40px;*/
-/*  height: 55px;*/
-/*  background: firebrick;*/
-/*}*/
 #grid-container {
   display: flex;
   flex-wrap: wrap;
@@ -22,22 +17,17 @@
 }
 
 .grid-row {
-  /*flex: 1;*/
   display: flex;
 }
 
-.grid-col {
-  flex: 1;
-  height: 50px;
-  background-color: lightgray;
-  /*border: 1px solid white;*/
+.cp {
+  cursor: pointer;
 }
 
-.grid-col.col{
+.col{
   width: var(--field-width);
   height: var(--field-height);
-  background: var(--bg-img) 2px -51px;
-  cursor: pointer;
+  background: var(--bg-img) 0 -50px;
 }
 .head-container{
   display: flex;
@@ -140,25 +130,22 @@
 .pressed-button{
   width: var(--field-width);
   height: var(--field-height);
-  background: var(--bg-img) -16px -49px;
+  background: var(--bg-img) -16px -50px;
 }
 .flag{
   width: var(--field-width);
   height: var(--field-height);
-  background: var(--bg-img) -33px 35px;
-  cursor: pointer;
+  background: var(--bg-img) -34px 34px;
 }
 .question-button{
   width: var(--field-width);
   height: var(--field-height);
-  background: var(--bg-img) -50px 35px;
-  cursor: pointer;
+  background: var(--bg-img) -51px 34px;
 }
 .question-pressed{
   width: var(--field-width);
   height: var(--field-height);
   background: var(--bg-img) -67px 35px;
-  cursor: pointer;
 }
 .bomb-find{
   width: var(--field-width);
@@ -168,7 +155,7 @@
 .bomb-red{
   width: var(--field-width);
   height: var(--field-height);
-  background: var(--bg-img)  37px -50px;
+  background: var(--bg-img) 38px -50px
 }
 .bomb-cross{
   width: var(--field-width);
@@ -216,21 +203,3 @@
   height: var(--field-height);
   background: var(--bg-img) 20px 17px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
