@@ -51,53 +51,53 @@
   flex-wrap: wrap;
 }
 
-.num-1 {
+.red-num-1 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) 0 0;
 }
 
-.num-2 {
+.red-num-2 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -14px 0;
 }
-.num-3 {
+.red-num-3 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -28px 0;
 }
-.num-4 {
+.red-num-4 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -42px 0;
 }
-.num-5 {
+.red-num-5 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -56px 0;
 }
-.num-6 {
+.red-num-6 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -70px 0;
 }
-.num-7 {
+.red-num-7 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) -84px 0;
 }
-.num-8 {
+.red-num-8 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) 41px 0;
 }
-.num-9 {
+.red-num-9 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) 27px 0;
 }
-.num-0 {
+.red-num-0 {
   width: var(--num-width);
   height: var(--num-height);
   background: var(--bg-img) 13px 0;

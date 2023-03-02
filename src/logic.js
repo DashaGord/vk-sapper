@@ -8,12 +8,11 @@ export function getNumbersImg(num) {
 
     return (
         <div className="timer-container">
-            <div className={`num-${num1}`}/>
-            <div className={`num-${num2}`}/>
-            <div className={`num-${num3}`}/>
+            <div className={`red-num-${num1}`}/>
+            <div className={`red-num-${num2}`}/>
+            <div className={`red-num-${num3}`}/>
         </div>
     )
-
 }
 
 export function changeSmile(smileClass) {
@@ -35,4 +34,28 @@ export function generateMines(selectedX, selectedY) {
         minesSet.add(JSON.stringify({X: x, Y: y}));
     }
     return Array.from(minesSet).map(s => JSON.parse(s));
+}
+
+export function calculateAndPush(points, calcX, calcY) {
+    if ((calcX >= 0 && calcX < N) && (calcY >= 0 && calcY < N)) {
+        points.push({X: calcX, Y: calcY})
+    }
+}
+
+export function getCoordinatesAroundField(point) {
+    let points = [];
+
+    const x = point.X;
+    const y = point.Y;
+
+    calculateAndPush(points, x - 1, y - 1);
+    calculateAndPush(points, x, y - 1);
+    calculateAndPush(points, x + 1, y - 1);
+    calculateAndPush(points, x + 1, y);
+    calculateAndPush(points, x + 1, y + 1);
+    calculateAndPush(points, x, y + 1);
+    calculateAndPush(points, x - 1, y + 1);
+    calculateAndPush(points, x - 1, y);
+
+    return points;
 }
