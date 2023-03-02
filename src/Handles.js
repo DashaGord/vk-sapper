@@ -4,7 +4,7 @@ import {GameStatus, MaxMines} from "./App";
 export const handleLeftClick = (event, gameStatus, setGameStatus) => {
     let node = event.target;
     let classList = node.classList;
-    if (GameStatus.FINISHED === gameStatus || classList.contains("flag")) {
+    if (gameStatus > 1 || classList.contains("flag")) {
         return;
     }
 
@@ -54,7 +54,7 @@ export const handleLeftClick = (event, gameStatus, setGameStatus) => {
             untouched.forEach(b => b.classList.remove("cp", "cr"));
 
             changeSmile("smile-sad");
-            setGameStatus(GameStatus.FINISHED);
+            setGameStatus(GameStatus.LOST);
         } else {
 
             if (classList.contains("num")) {
@@ -72,7 +72,7 @@ export const handleLeftClick = (event, gameStatus, setGameStatus) => {
 
             if (cleanFields === 0) {
                 changeSmile("smile-cool");
-                setGameStatus(GameStatus.FINISHED);
+                setGameStatus(GameStatus.WON);
 
                 const untouchedBombs = document.querySelectorAll("#grid-container .bomb:not(.flag)");
                 untouchedBombs.forEach(b => b.className = "bomb-find col");
@@ -107,13 +107,14 @@ export const handleRightClick = (event, gameStatus, counter, setCounter) => {
 
 export const handleOnMouseOut = (gameStatus) => {
     switch (gameStatus) {
-        case GameStatus.NOT_STARTED:
-        case GameStatus.STARTED:
-            changeSmile("smile");
-            break;
-        case GameStatus.FINISHED:
+        case GameStatus.LOST:
             changeSmile("smile-sad");
             break;
+        case GameStatus.WON:
+            changeSmile("smile-cool");
+            break;
+        default:
+            changeSmile("smile");
     }
 }
 

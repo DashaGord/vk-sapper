@@ -11,7 +11,8 @@ export const MaxMines = 40;
 export const GameStatus = {
     NOT_STARTED: 0,
     STARTED: 1,
-    FINISHED: 2
+    LOST: 2,
+    WON: 3
 }
 
 function App() {
@@ -42,12 +43,12 @@ function App() {
                                onClick={e => handleLeftClick(e, gameStatus, setGameStatus)}
                                onContextMenu={e => handleRightClick(e, gameStatus, counter, setCounter)}
                                onMouseDown={e => {
-                                   if (GameStatus.FINISHED !== gameStatus) {
+                                   if (gameStatus < 2) {
                                        changeSmile("smile-wow");
                                    }
                                }}
                                onMouseUp={e => {
-                                   if (GameStatus.FINISHED !== gameStatus) {
+                                   if (gameStatus < 2) {
                                        changeSmile("smile");
                                    }
                                }}
@@ -69,7 +70,11 @@ function App() {
                 ></div>
                 {getNumbersImg(time)}
             </div>
-            <Container fluid id="grid-container" onMouseOut={e => handleOnMouseOut(gameStatus)}>
+            <Container fluid id="grid-container" onMouseOut={e => {
+                if (gameStatus < 2) {
+                    handleOnMouseOut(gameStatus);
+                }
+            }}>
                 {renderFields()}
             </Container>
         </div>
