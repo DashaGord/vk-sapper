@@ -1,10 +1,10 @@
-import {changeSmile, generateMines, getCoordinatesAroundField, processingClickField, recursiveSelect} from "./logic";
-import {GameStatus, MaxMines} from "./App";
+import {changeSmile, generateMines, getCoordinatesAroundField, processingClickField, recursiveSelect} from "../logic";
+import {GameStatus} from "../App";
 
-export const handleLeftClick = (event, gameStatus, setGameStatus) => {
+export const colHandleLeftClick = (event, gameStatus, setGameStatus) => {
     let node = event.target;
     let classList = node.classList;
-    if (gameStatus > 1 || classList.contains("flag")) {
+    if (gameStatus > 1 || classList.contains("flag") || !classList.contains("cp")) {
         return;
     }
 
@@ -80,7 +80,7 @@ export const handleLeftClick = (event, gameStatus, setGameStatus) => {
     }
 };
 
-export const handleRightClick = (event, gameStatus, counter, setCounter) => {
+export const colHandleRightClick = (event, gameStatus, counter, setCounter) => {
     event.preventDefault();
 
     let node = event.target;
@@ -101,25 +101,43 @@ export const handleRightClick = (event, gameStatus, counter, setCounter) => {
     }
 };
 
-export const handleOnMouseOut = (gameStatus) => {
-    switch (gameStatus) {
-        case GameStatus.LOST:
-            changeSmile("smile-sad");
-            break;
-        case GameStatus.WON:
-            changeSmile("smile-cool");
-            break;
-        default:
-            changeSmile("smile");
+export const colOnMouseDown = (event, gameStatus) => {
+    if (event.button === 0) {
+        event.preventDefault();
+        let classList = event.target.classList;
+        if (classList.contains("grid-col")) {
+            if (!classList.contains("question-pressed")) {
+                classList.add("question-pressed");
+            }
+            changeSmile("smile-wow", gameStatus);
+        }
     }
 }
 
-export const detectSmileRelease = (setGameStatus, setCounter, setTime) => {
-    changeSmile("smile");
-    setGameStatus(GameStatus.NOT_STARTED);
-    setCounter(MaxMines);
-    setTime(0);
+export const colOnMouseOut = (event) => {
+    let classList = event.target.classList;
+    if (classList.contains("question-pressed")) {
+        classList.remove("question-pressed");
+    }
+}
 
-    let fields = document.querySelectorAll("#grid-container .col");
-    fields.forEach(f => f.className = "grid-col cr cp col");
+export const colOnMouseOver = (event, isMouseDown, gameStatus) => {
+    event.preventDefault();
+    let classList = event.target.classList;
+    if (isMouseDown && classList.contains("grid-col")) {
+        if (!classList.contains("question-pressed")) {
+            classList.add("question-pressed");
+        }
+        changeSmile("smile-wow", gameStatus);
+    }
+}
+
+export const colOnMouseUp = (event, gameStatus, setGameStatus) => {
+    if (event.button === 0) {
+        let classList = event.target.classList;
+        classList.remove("question-pressed");
+
+        changeSmile("smile", gameStatus);
+        colHandleLeftClick(event, gameStatus, setGameStatus);
+    }
 }

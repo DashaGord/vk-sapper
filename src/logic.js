@@ -15,8 +15,10 @@ export function getNumbersImg(num) {
     )
 }
 
-export function changeSmile(smileClass) {
-    document.getElementById("smile-box").className = smileClass;
+export function changeSmile(smileClass, gameStatus = 1) {
+    if (gameStatus < 2) {
+        document.getElementById("smile-box").className = smileClass;
+    }
 }
 
 function getRandomNumber(max) {

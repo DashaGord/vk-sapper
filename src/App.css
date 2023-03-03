@@ -2,10 +2,12 @@
     --bg-img: url('../public/img/sprites.png');
     --num-width: 14px;
     --num-height: 23px;
-    --field-width: 17px;
-    --field-height: 17px;
+    --field-width: 16px;
+    --field-height: 16px;
     --smile-width: 27px;
     --smile-height: 26px;
+    --shadow: 6px 6px 0 -4px rgba(123, 123, 123) inset,
+    -6px -6px 0 -4px rgba(255, 255, 255, 0.6) inset;
 }
 
 #grid-container {
@@ -13,11 +15,10 @@
     flex-wrap: wrap;
     align-items: center;
     background: #bdbdbd;
-    max-width: 273px;
+    max-width: 258px;
     padding: 1px;
     border: 6px solid #bdbdbd;
-    box-shadow: 6px 6px 0 -4px rgba(123, 123, 123) inset,
-    -6px -6px 0 -4px rgba(255, 255, 255, 0.6) inset;
+    box-shadow: var(--shadow);
 }
 
 .grid-row {
@@ -31,12 +32,12 @@
 .col {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 2px -50px;
+    background: var(--bg-img) 0 -51px;
 }
 
 #global{
-    width: 289px;
-    height: 333px;
+    width: 275px;
+    height: 318px;
     box-shadow: -8px -8px 4px -5px rgb(123 123 123) inset;
 }
 
@@ -45,10 +46,9 @@
     flex-wrap: wrap;
     background: #bdbdbd;
     height: 35px;
-    max-width: 277px;
+    max-width: 262px;
     border: 5px solid #bdbdbd;
-    box-shadow: 6px 6px 0 -4px rgba(123, 123, 123) inset,
-    -6px -6px 0 -4px rgba(255, 255, 255, 0.6) inset;
+    box-shadow: var(--shadow);
     justify-content: space-between;
     align-items: center;
 }
@@ -162,25 +162,25 @@
 .pressed-button {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -16px -50px;
+    background: var(--bg-img) -17px -51px;
 }
 
 .flag {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -33px 34px;
+    background: var(--bg-img) -34px 33px;
 }
 
 .question-button {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -50px 34px;
+    background: var(--bg-img) -51px 33px;
 }
 
 .question-pressed {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -67px 35px;
+    background: var(--bg-img) -68px 33px;
 }
 
 .bomb-find {
@@ -192,7 +192,7 @@
 .bomb-red {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 38px -50px
+    background: var(--bg-img) 37px -51px;
 }
 
 .bomb-cross {
@@ -205,47 +205,47 @@
 .field-num-1 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 0px 17px;
+    background: var(--bg-img) 0 16px;
 }
 
 .field-num-2 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -17px 17px;
+    background: var(--bg-img) -17px 16px;
 }
 
 .field-num-3 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -34px 17px;
+    background: var(--bg-img) -34px 16px;
 }
 
 .field-num-4 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) -50px 17px;
+    background: var(--bg-img) -51px 16px;
 }
 
 .field-num-5 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 71px 17px;
+    background: var(--bg-img) 71px 16px;
 }
 
 .field-num-6 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 54px 17px;
+    background: var(--bg-img) 54px 16px;
 }
 
 .field-num-7 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 37px 17px;
+    background: var(--bg-img) 37px 16px;
 }
 
 .field-num-8 {
     width: var(--field-width);
     height: var(--field-height);
-    background: var(--bg-img) 20px 17px;
+    background: var(--bg-img) 20px 16px;
 }
